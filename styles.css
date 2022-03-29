@@ -1,0 +1,110 @@
+div {
+    margin-bottom: 1px;
+}
+
+.title {
+    display: inline-block;
+    width: 100px;
+}
+
+body {
+    background-color: #008080;
+}
+
+form {
+    width: 500px;
+    text-align: center;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 5px;
+    background-color: #c3c3c3;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.content {
+    width: 500px;
+    text-align: center;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 5px;
+    background-color: #c3c3c3;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    text-align: center;
+}
+
+
+/* input,
+textarea {
+    background-color: #ffffff;
+} */
+
+
+/* button {
+    color: #ffffff;
+    margin-top: 5px;
+    width: 49%;
+    align-self: center;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    height: 6vh;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    transition: all 0.35s;
+    background-color: #01698b;
+    align-items: center;
+} */
+
+input[type="submit"],
+button {
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    min-height: 23px;
+    min-width: 75px;
+    padding: 0 12px;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+select {
+    background-color: #fff;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    box-sizing: border-box;
+    padding: 3px 4px;
+    padding-right: 4px;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='text'],
+select {
+    background-color: #fff;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    box-sizing: border-box;
+    padding: 3px 4px;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='text'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+}

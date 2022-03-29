@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Add Product - BBPartPicker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function swapform() {
+            let temp = document.getElementById("selectedparttype").value;
+
+            switch (temp) {
+                case "facebolt":
+                    document.getElementById("facebolt").style.display = "block";
+                    document.getElementById("energyring").style.display = "none";
+                    document.getElementById("fusionwheel").style.display = "none";
+                    document.getElementById("spintrack").style.display = "none";
+                    document.getElementById("tips").style.display = "none";
+                    break;
+                case "energyring":
+                    document.getElementById("facebolt").style.display = "none";
+                    document.getElementById("energyring").style.display = "block";
+                    document.getElementById("fusionwheel").style.display = "none";
+                    document.getElementById("spintrack").style.display = "none";
+                    document.getElementById("tips").style.display = "none";
+                    break;
+                case "fusionwheel":
+                    document.getElementById("facebolt").style.display = "none";
+                    document.getElementById("energyring").style.display = "none";
+                    document.getElementById("fusionwheel").style.display = "block";
+                    document.getElementById("spintrack").style.display = "none";
+                    document.getElementById("tips").style.display = "none";
+                    break;
+                case "spintrack":
+                    document.getElementById("facebolt").style.display = "none";
+                    document.getElementById("energyring").style.display = "none";
+                    document.getElementById("fusionwheel").style.display = "none";
+                    document.getElementById("spintrack").style.display = "block";
+                    document.getElementById("tips").style.display = "none";
+                    break;
+                case "tips":
+                    document.getElementById("facebolt").style.display = "none";
+                    document.getElementById("energyring").style.display = "none";
+                    document.getElementById("fusionwheel").style.display = "none";
+                    document.getElementById("spintrack").style.display = "none";
+                    document.getElementById("tips").style.display = "block";
+                    break;
+            }
+        }
+
+        function test() {
+            alert("big pog");
+        }
+    </script>
+</head>
+
+<body>
+    <form id="adminForm" action="admin_add_product.php" method="post">
+        <h1>Add Product to Database</h1>
+
+        <select name="parttype" id="selectedparttype" onchange="swapform()">
+            <option value="facebolt" selected>Face Bolts</option>
+            <option value="energyring">Energy Ring</option>
+            <option value="fusionwheel">Fusion Wheels</option>
+            <option value="spintrack">Spin Tracks</option>
+            <option value="tips">Tips</option>
+        </select>
+        <br><br>
+
+        <div id="facebolt">
+            <div>
+                <label for="name">Face Bolt Name: </label>
+                <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" id="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" id="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" id="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" id="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" id="quantity">
+            </div>
+
+            <p>Is this a clone of a pre-existing item?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+
+        <div id="energyring" style="display: none;">
+            <div>
+                <label for="name">Energy Ring Name: </label>
+                <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight: </label>
+                <input type="number" id="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" id="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" id="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" id="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" id="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" id="quantity">
+            </div>
+
+            <p>Is this a clone of a pre-existing item?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+
+            <p>Spin Direction:</p>
+            <div>
+                <label for="left">Left</label>
+                <input type="radio" id="left" value="left" name="spinDirection">
+                <label for="right">Right</label>
+                <input type="radio" id="right" value="right" name="spinDirection">
+                <label for="both">Both</label>
+                <input type="radio" id="both" value="both" name="spinDirection">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+
+        <div id="fusionwheel" style="display: none;">
+            <div>
+                <label for="name">Fusion Wheel Name: </label>
+                <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight: </label>
+                <input type="number" id="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" id="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" id="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" id="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" id="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" id="quantity">
+            </div>
+
+            <p>Is this a clone of a pre-existing item?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+
+            <p>Spin Direction:</p>
+            <div>
+                <label for="left">Left</label>
+                <input type="radio" id="left" value="left" name="spinDirection">
+                <label for="right">Right</label>
+                <input type="radio" id="right" value="right" name="spinDirection">
+                <label for="both">Both</label>
+                <input type="radio" id="both" value="both" name="spinDirection">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+
+        <div id="spintrack" style="display: none;">
+            <div>
+                <label for="name">Spin Track Name: </label>
+                <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight: </label>
+                <input type="number" id="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" id="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" id="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" id="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" id="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" id="quantity">
+            </div>
+
+            <p>Is this a clone of a pre-existing item?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+
+        <div id="tips" style="display: none;">
+            <div>
+                <label for="name">Tip Name: </label>
+                <input type="text" id="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight: </label>
+                <input type="number" id="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" id="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" id="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" id="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" id="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" id="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" id="quantity">
+            </div>
+
+            <p>Is this a clone of a pre-existing item?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" onclick="test()">
+        </div>
+    </form>
+</body>
+
+</html>
