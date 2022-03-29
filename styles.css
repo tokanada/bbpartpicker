@@ -92,6 +92,7 @@ select {
 input[type='email'],
 input[type='number'],
 input[type='text'],
+input[type='password'],
 select {
     background-color: #fff;
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
@@ -101,7 +102,8 @@ select {
 
 input[type='email'],
 input[type='number'],
-input[type='text'] {
+input[type='text'],
+input[type='password'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
