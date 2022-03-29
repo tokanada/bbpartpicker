@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Add Fusion Wheel - BBPartPicker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function swapform(src) {
+            window.location = src;
+        }
+
+        function test() {
+            alert("big pog");
+        }
+    </script>
+</head>
+
+<body>
+    <form id="adminForm" action="admin_add_product.php" method="post">
+        <h1>Add Fusion Wheel to Database</h1>
+
+        <select name="parttype" id="selectedparttype" onchange="swapform(this.value)">
+            <option>Select Part to Add</option>
+            <option value="admin_add_facebolt.html">Face Bolts</option>
+            <option value="admin_add_energyring.html">Energy Ring</option>
+            <option value="admin_add_fusionwheel.html">Fusion Wheels</option>
+            <option value="admin_add_spintrack.html">Spin Tracks</option>
+            <option value="admin_add_performancetip.html">Tips</option>
+        </select>
+        <br><br>
+
+        <div id="fusionwheel">
+            <div>
+                <label for="name">Fusion Wheel Name: </label>
+                <input type="text" name="name">
+            </div>
+            <br>
+            <div>
+                <label for="weight">Weight: </label>
+                <input type="number" name="weight">
+            </div>
+            <br>
+            <div>
+                <label for="attack">Attack Value: </label>
+                <input type="number" name="attack">
+            </div>
+            <br>
+            <div>
+                <label for="defense">Defense Value: </label>
+                <input type="number" name="defense">
+            </div>
+            <br>
+            <div>
+                <label for="stamina">Stamina Value: </label>
+                <input type="number" name="stamina">
+            </div>
+            <br>
+            <div>
+                <label for="generation">Generation: </label>
+                <input type="text" name="generation">
+            </div>
+            <br>
+            <div>
+                <label for="price">Price: </label>
+                <input type="number" name="price">
+            </div>
+            <br>
+            <div>
+                <label for="quantity">Number of Units: </label>
+                <input type="number" name="quantity">
+            </div>
+
+            <p>Is this a fake clone?:</p>
+            <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="yesNo">
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="yesNo">
+            </div>
+
+            <p>Spin Direction:</p>
+            <div>
+                <label for="left">Left</label>
+                <input type="radio" id="left" value="left" name="spinDirection">
+                <label for="right">Right</label>
+                <input type="radio" id="right" value="right" name="spinDirection">
+                <label for="both">Both</label>
+                <input type="radio" id="both" value="both" name="spinDirection">
+            </div>
+            <br>
+            <div>
+                <label for="itemPicture">Please upload an image of the item:</label><br><br>
+                <input type="file" id="itemPicture" name="itemPicture" accept="image/png, image/jpeg, image/jpg">
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" onclick="test()">
+        </div>
+    </form>
+</body>
+
+</html>
