@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <form id="adminForm" action="admin_add_product.php" method="post">
+    <form id="adminForm" action="admin_add_fusionwheel.php" method="post" enctype="multipart/form-data">
         <h1>Add Fusion Wheel to Database</h1>
 
         <select name="parttype" id="selectedparttype" onchange="swapform(this.value)">
@@ -62,7 +62,7 @@
             <br>
             <div>
                 <label for="price">Price: </label>
-                <input type="number" name="price">
+                <input type="number" name="price" scale="0.01">
             </div>
             <br>
             <div>
@@ -73,9 +73,9 @@
             <p>Is this a fake clone?:</p>
             <div>
                 <label for="yes">Yes</label>
-                <input type="radio" id="yes" value="yes" name="yesNo">
+                <input type="radio" id="yes" value="1" name="yesNo">
                 <label for="no">No</label>
-                <input type="radio" id="no" value="no" name="yesNo">
+                <input type="radio" id="no" value="0" name="yesNo">
             </div>
 
             <p>Spin Direction:</p>
