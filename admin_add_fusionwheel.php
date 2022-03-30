@@ -24,7 +24,7 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-$sql = "INSERT INTO FusionWheel (name, weight, attack, defense, stamina, quantity, generation, clone, spindirection, price, picture) VALUES ('" . $name . "','" . $weight . "','" . $attack . "','" . $defense . "','" . $stamina . "','" . $quantity . "','" . $generation . "','" . $clone . "','" . $spin_direction . "','" . $price . "','" . $image_location . "')" ;
+$sql = "INSERT INTO FusionWheel (name, weight, attack, defense, stamina, quantity, generation, clone, spindirection, price, picture) VALUES ('{$name}', '{$weight}', '{$attack}', '{$defense}', '{$stamina}', '{$quantity}', '{$generation}', '{$clone}', '{$spin_direction}', '{$price}', '{$image_location}')";
 
 // Perform a query, check for error
 if (!mysqli_query($connection,$sql)) {

@@ -17,6 +17,9 @@ $count = mysqli_num_rows($result);
 if($count == 1){
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     if(password_verify($pass, $row['pass'])){
+        $cookie_name = $user;
+        $cookie_value = $user;
+        setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
         if($row['isadmin'] == 1){
             header('Location: /~dtao/Homework4/admin_homepage.html');
         } else {

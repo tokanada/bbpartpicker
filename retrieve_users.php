@@ -43,6 +43,8 @@
 			<th>Username </th>
 			<th>Email</th>
 			<th>Is Admin</th>
+			<th>Beyblade</th>
+			<th>Address</th>
 		</thead>
 </body>
 </head>
@@ -83,6 +85,12 @@ while ($resultArray = mysqli_fetch_array($result))
 	echo "</td>";
 	echo "<td>";
 	echo			$resultArray['isadmin'];
+	echo "</td>";
+	echo "<td>";
+	echo			$resultArray['beyblade'];
+	echo "</td>";
+	echo "<td>";
+	echo			$resultArray['address'];
 	echo "</td>";
 	echo "</tr>";
 }

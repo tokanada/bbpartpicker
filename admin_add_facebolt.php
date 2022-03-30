@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-$sql = "INSERT INTO FaceBolt (name, weight, attack, defense, stamina, quantity, generation, clone, price, picture) VALUES ('" . $name . "','" . $weight . "','" . $attack . "','" . $defense . "','" . $stamina . "','" . $quantity . "','" . $generation . "','" . $clone . "','" . $price . "','" . $image_location . "')" ;
+$sql = "INSERT INTO FaceBolt (name, weight, attack, defense, stamina, quantity, generation, clone, price, picture) VALUES ('{$name}', '{$weight}', '{$attack}', '{$defense}', '{$stamina}', '{$quantity}', '{$generation}', '{$clone}', '{$price}', '{$image_location}')";
 
 // Perform a query, check for error
 if (!mysqli_query($connection,$sql)) {
