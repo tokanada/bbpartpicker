@@ -17,10 +17,14 @@
             <th>Defense</th>
             <th>Stamina</th>
             <th>Generation</th>
-            <th>Price</th>
             <th>Spin Direction</th>
+            <th>Price</th>
         </thead>
     <?php
+
+
+    include 'secrets.php';
+
 
     $connection = mysqli_connect(Mydbserver, Mydbid, Mydbpassword, Mydatabase);
 
@@ -40,7 +44,7 @@
     {
         echo "<tr>";
         echo "<td>";
-        echo $resultArray['picture'];
+        echo "<img src=". $resultArray['picture']. ">";
         echo "</td>";
         echo "<td>";
         //change anchor to be purchase
