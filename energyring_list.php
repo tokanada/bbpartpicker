@@ -7,9 +7,10 @@
     </head>
 
     <body>
-    <h1>Face Bolts - </h1>
+    <h1>Energy Rings</h1>
     <table border="2" width="60%">
         <thead>
+            <th></th>
             <th>Picture</th>
             <th>Name</th>
             <th>Weight</th>
@@ -37,18 +38,20 @@
 
 
     $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
-
+    $partType = "energyring";
 
 
     while ($resultArray = mysqli_fetch_array($result))
     {
         echo "<tr>";
         echo "<td>";
+        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "?type=" . $partType . "'>Add to Cart</a>";
+        echo "</td>";
+        echo "<td>";
         echo "<img src=". $resultArray['picture']. ">";
         echo "</td>";
         echo "<td>";
-        //change anchor to be purchase
-        echo "<a href='book_shopping_3.php?id=". $resultArray['name'] . "'>" . $resultArray['name']  . "</a>";
+        echo $resultArray['name'];
         echo "</td>";
         echo "<td>";
         echo $resultArray['weight'];
