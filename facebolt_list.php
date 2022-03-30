@@ -7,9 +7,10 @@
     </head>
 
     <body>
-    <h1>Face Bolts - </h1>
+    <h1>Face Bolts</h1>
     <table border="2" width="60%">
         <thead>
+            <th></th>
             <th>Picture</th>
             <th>Name</th>
             <th>Weight</th>
@@ -18,11 +19,13 @@
             <th>Stamina</th>
             <th>Generation</th>
             <th>Price</th>
-            <th>Spin Direction</th>
         </thead>
     <?php
 
+
     include 'secrets.php';
+
+
     $connection = mysqli_connect(Mydbserver, Mydbid, Mydbpassword, Mydatabase);
 
     if (mysqli_connect_errno()) {
@@ -30,21 +33,24 @@
     exit();
     }
 
-    $sql = "SELECT name, weight, attack, defense, stamina, generation, price, spindirection, picture FROM EnergyRing";
+    $sql = "SELECT name, weight, attack, defense, stamina, generation, price, picture FROM FaceBolt";
 
 
     $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
+    $partType = "facebolt";
 
-    
+
     while ($resultArray = mysqli_fetch_array($result))
     {
         echo "<tr>";
         echo "<td>";
-        echo $resultArray['picture'];
+        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "?type=" . $partType . "'>Add to Cart</a>";
         echo "</td>";
         echo "<td>";
-        //change anchor to be purchase
-        echo "<a href='book_shopping_3.php?id=". $resultArray['name'] . "'>" . $resultArray['name']  . "</a>";
+        echo "<img src=". $resultArray['picture']. ">";
+        echo "</td>";
+        echo "<td>";
+        echo $resultArray['name'];
         echo "</td>";
         echo "<td>";
         echo $resultArray['weight'];
@@ -60,9 +66,6 @@
         echo "</td>";
         echo "<td>";
         echo $resultArray['generation'];
-        echo "</td>";
-        echo "<td>";
-        echo $resultArray['spindirection'];
         echo "</td>";
         echo "<td>";
         echo "$" . $resultArray['price'];
