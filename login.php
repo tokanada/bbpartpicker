@@ -18,17 +18,17 @@ if($count == 1){
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     if(password_verify($pass, $row['pass'])){
         if($row['isadmin'] == 1){
-            header('Location: /~dtao/Homework3/retrieve_users.php');
+            header('Location: /~dtao/Homework4/admin_homepage.html');
         } else {
-            header('Location: /~dtao/Homework3/mainpage.html');
+            header('Location: /~dtao/Homework4/mainshoppage.html');
         }
     } else
         print "The username or password do not match";
-        header("refresh: 5; /~dtao/Homework3/login.html");
+        header("refresh: 5; /~dtao/Homework4/login.html");
 
 } else {
     print "The username or password do not match";
-    header("refresh: 5; /~dtao/Homework3/login.html");
+    header("refresh: 5; /~dtao/Homework4/login.html");
 }
 
 ?>
