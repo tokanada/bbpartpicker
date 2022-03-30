@@ -7,7 +7,7 @@ $pass = $_POST['password'];
 $email = $_POST['email'];
 $passconf = $_POST['passwordConfirm'];
 $agreement = $_POST['agreement'];
-$address = $_POST['address']
+$address = $_POST['address'];
 $isadmin = 0;
 
 $password_pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i";
@@ -30,7 +30,7 @@ if($pass != $passconf){
             //hash password
             $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
     
-            $query ="INSERT INTO Users (username, pass, email, agreement, isadmin, address) VALUES ('{$user}', '{$hashedPass}', '{$email}', '{$agreement}', '{$isadmin}', '{$address}')";
+            $query = "INSERT INTO Users (username, pass, email, agreement, isadmin, address) VALUES ('{$user}', '{$hashedPass}', '{$email}', '{$agreement}', '{$isadmin}', '{$address}')";
             $result = mysqli_query($connection, $query) or die(mysql_error($connection));
             header('Location: /~dtao/Homework4/login.html');
 

@@ -41,6 +41,9 @@
     $partType = "energyring";
 
 
+    $cookie = $_COOKIE['username'];
+
+    echo $cookie;
     while ($resultArray = mysqli_fetch_array($result))
     {
         echo "<tr>";
