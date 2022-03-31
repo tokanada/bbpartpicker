@@ -44,7 +44,7 @@
     {
         echo "<tr>";
         echo "<td>";
-        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "?type=" . $partType . "'>Add to Cart</a>";
+        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "&type=" . $partType . "'>Add to Cart</a>";
         echo "</td>";
         echo "<td>";
         echo "<img src=". $resultArray['picture']. ">";

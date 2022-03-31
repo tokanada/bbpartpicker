@@ -34,7 +34,7 @@
     exit();
     }
 
-    $sql = "SELECT name, weight, attack, defense, stamina, generation, price, spindirection, picture FROM EnergyRing";
+    $sql = "SELECT name, weight, attack, defense, stamina, generation, price, spindirection, picture FROM FusionWheel";
 
 
     $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
@@ -45,7 +45,7 @@
     {
         echo "<tr>";
         echo "<td>";
-        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "?type=" . $partType . "'>Add to Cart</a>";
+        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "&type=" . $partType . "'>Add to Cart</a>";
         echo "</td>";
         echo "<td>";
         echo "<img src=". $resultArray['picture']. ">";

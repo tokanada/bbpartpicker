@@ -11,7 +11,9 @@ body {
     background-color: #008080;
 }
 
-form {
+form,
+table,
+div.productpage {
     width: 500px;
     text-align: center;
     border: 5px solid black;
@@ -46,28 +48,6 @@ form {
 h1 {
     text-align: center;
 }
-
-
-/* input,
-textarea {
-    background-color: #ffffff;
-} */
-
-
-/* button {
-    color: #ffffff;
-    margin-top: 5px;
-    width: 49%;
-    align-self: center;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    height: 6vh;
-    font-size: 1.5rem;
-    border: 1px solid black;
-    transition: all 0.35s;
-    background-color: #01698b;
-    align-items: center;
-} */
 
 input[type="submit"],
 button {
@@ -109,4 +89,12 @@ input[type='password'] {
     appearance: none;
     border: none;
     border-radius: 0;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    margin: auto;
+    background-color: white;
 }

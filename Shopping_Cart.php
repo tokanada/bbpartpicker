@@ -5,54 +5,89 @@
 
     <meta charset="UTF-8">
     <title>Shopping Cart | BBPartPicker</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+		<?php include 'styles.css'; ?>
+	</style>
 
 </head>
 
-<body>
+<table borders="2" width="60%">
+	<thead>
+		<th>Change</th>
+		<th>Picture</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Price</th>
+	</thead>
 
-	<form>
-		<h1>Shopping Cart</h1><br><br>
-		
-		<label for="user">Current User</label>
-		<input type="text" id="user" name="user">
-		<br><br><br>
-		
-		<table>
-		<thead>
-			<tr>
-				<th class="parts" colspan="2">Parts</th>
-				<th></th>
-				<th class="selection" colspan="2">Selection</th>
-				<th></th>
-				<th class="price" colspan="2">Price</th>
-				<th></th>
-				<th class="picture" colspan="2">Picture</th>
-				<th></th>
-			</tr>
-			
-			<tbody>
-				<tr rowspan="2">
-					<td class="facebolt">facebolt</td>
-				</tr>
-				<tr rowspan="2">
-					<td class="energyring">energy ring</td>
-				</tr>
-				<tr rowspan="2">
-					<td class="fusionwheel">fusion wheel</td>
-				</tr>
-				<tr rowspan="2">
-					<td class="spintrack">spintrack</td>
-				</tr>
-				<tr rowspan="2">
-					<td class="performancetip">performancetip</td>
-				</tr>	
-			</tbody>	
-		</thead>
-		</table>
-		
-		<br><br>
-		<button type="button" id="checkout" name="checkout">Checkout</button>
-		
-	</form>
-</body>
+<?php
+
+## The shoppinglist table only contains the names of the item, not the values
+# PHP is going to have to grab each name for each part
+# It has to then do a search in each corresponding part table for other values to display
+# Calculate price as well
+
+### SQL SERVER CONNECTION STUFF
+include 'secrets.php';
+$cookie = $_COOKIE["username"];
+$connection = mysqli_connect(Mydbserver, Mydbid, Mydbpassword, Mydatabase);
+
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  exit();
+}
+
+## RETRIEVE USER'S SHOPPING LIST
+$sql = "SELECT * FROM ShoppingList WHERE username='{$cookie}'";
+
+echo $sql;
+
+echo "<br />";
+$result = mysqli_query($connection, $sql) or die(mysql_error($connection));
+
+$count = mysqli_num_rows($result);
+
+$total = 0;
+	
+if($count == 1){
+	# User's Shopping List
+	$resultArray = mysqli_fetch_array($result);
+	$part_names = array($resultArray["facebolt"],$resultArray["energyring"],$resultArray["fusionwheel"],$resultArray["spintrack"],$resultArray["performancetip"]);
+	$part_types = array("FaceBolt","EnergyRing", "FusionWheel", "SpinTrack", "PerformanceTip");
+
+	for ($i = 0; $i < count($part_names); $i++) {
+		$query = "SELECT price, picture FROM {$part_types[$i]} WHERE name='{$part_names[$i]}'";
+		$result = mysqli_query($connection, $query) or die(mysql_error($connection));
+		$resultArray = mysqli_fetch_array($result);
+		$price = $resultArray["price"];
+		$picture = $resultArray["picture"];
+
+		echo "<tr>";
+		echo "<td>";
+        echo "<a href='".strtolower($part_types[$i])."_list.php'>Change</a>";
+		echo "</td>";
+		echo "<td>";
+        echo "<img src=". $picture. ">";
+		echo "</td>";
+		echo "<td>";
+		echo $part_names[$i];
+		echo "</td>";
+		echo "<td>";
+		echo $part_types[$i];
+		echo "</td>";
+		echo "<td>";
+		echo "$" . $price;
+		echo "</td>";
+		echo "</tr>";
+		$total = $total + $price;
+	}
+
+}
+echo "</table>";
+
+echo "<br />";
+echo "<h1>The current total charge is  $" . $total . ".</h1>";
+
+mysqli_close($connection);
+
+?>

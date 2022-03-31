@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Energy Ring Product List</title>
-        <link rel="stylesheet" href="styles.css">
+        <style>
+            <?php include 'styles.css'; ?>
+        </style>
     </head>
 
     <body>
@@ -40,15 +42,11 @@
     $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
     $partType = "energyring";
 
-
-    $cookie = $_COOKIE['username'];
-
-    echo $cookie;
     while ($resultArray = mysqli_fetch_array($result))
     {
         echo "<tr>";
         echo "<td>";
-        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "?type=" . $partType . "'>Add to Cart</a>";
+        echo "<a href='add_item_cart.php?id=" . $resultArray['name'] . "&type=" . $partType . "'>Add to Cart</a>";
         echo "</td>";
         echo "<td>";
         echo "<img src=". $resultArray['picture']. ">";

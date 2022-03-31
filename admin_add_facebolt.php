@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $name = $_POST['name'];
 $weight = $_POST['weight'];
 $attack = $_POST['attack'];

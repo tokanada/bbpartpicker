@@ -54,12 +54,6 @@
 $id = $_POST['id'];
 $password = $_POST['password'];
 
-
-//echo $id;
-//echo '<br />';
-//echo $password;
-//echo '<br />';
-
 include 'secrets.php';
 
 
@@ -67,7 +61,6 @@ $connection = mysqli_connect(Mydbserver, Mydbid, Mydbpassword, Mydatabase);
 
 
 $sql = "SELECT username, email FROM Users" ;
-//echo $sql;
 
 
 $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
@@ -78,19 +71,19 @@ while ($resultArray = mysqli_fetch_array($result))
 {
     echo "<tr>";
     echo "<td>";
-	echo			$resultArray['username'];
+	echo $resultArray['username'];
 	echo "</td>";
 	echo "<td>";
-	echo			$resultArray['email'];
+	echo $resultArray['email'];
 	echo "</td>";
 	echo "<td>";
-	echo			$resultArray['isadmin'];
+	echo $resultArray['isadmin'];
 	echo "</td>";
 	echo "<td>";
-	echo			$resultArray['beyblade'];
+	echo $resultArray['beyblade'];
 	echo "</td>";
 	echo "<td>";
-	echo			$resultArray['address'];
+	echo $resultArray['address'];
 	echo "</td>";
 	echo "</tr>";
 }
