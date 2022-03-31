@@ -36,7 +36,7 @@ mysqli_close($connection);
 
 <?php
 
-if ($_FILES["itemPicture"]["type"] == "image/png")
+if ($_FILES["itemPicture"]["type"] == "image/png" || $_FILES["itemPicture"]["type"] == "image/jpg" || $_FILES["itemPicture"]["type"] == "image/jpeg")
   {
   if ($_FILES["itemPicture"]["error"] > 0)
     {
@@ -62,6 +62,5 @@ else
 ?>
 
 <?php
-echo "<h1><a href='retrieve_books_2.php'>See available books.</a></h1>";
-echo "<h1><a href='insert_new_book.html'>Insert more books?</a> </h1>";
+header("Location:admin_homepage.html");
 ?>

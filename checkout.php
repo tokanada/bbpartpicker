@@ -1,45 +1,85 @@
 <!--Group: David Tao, John Xiao, TJ Miller, Nick Ceglio-->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | BBPartPicker</title>
+    <style>
+		<?php include 'styles.css'; ?>
+	</style>
+</head>
+<body>
+
+<h1>Payment successfully processed</h1>
+    
+<table borders="2" width="60%">
+	<thead>
+		<th>Picture</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Price</th>
+	</thead>
+
 <?php
 
-$user = $_POST['username'];
-$pass = $_POST['password'];
-$email = $_POST['email'];
-$passconf = $_POST['passwordConfirm'];
-$agreement = $_POST['agreement'];
+$user = $_COOKIE["username"];
 $address = $_POST['address'];
-$isadmin = 0;
-
-$password_pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i";
 
 include 'secrets.php';
 
 $connection = mysqli_connect(Mydbserver, Mydbid, Mydbpassword, Mydatabase);
 
-if($pass != $passconf){
-    echo "<p>Your passwords don't match</p>";
-    header("refresh: 5; /~dtao/Homework4/register.html");
-} else {
-    if (preg_match($password_pattern, $pass)) {
-        //check if username already exists in database
-        $query = "SELECT * FROM Users WHERE username='$user'";
-        $result = mysqli_query($connection, $query) or die(mysql_error($connection));
-        $count  = mysqli_num_rows($result);
+$sql = "SELECT * FROM ShoppingList WHERE username='{$user}'";
 
-        if($count == 0){
-            //hash password
-            $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
-    
-            $query = "INSERT INTO Users (username, pass, email, agreement, isadmin, address) VALUES ('{$user}', '{$hashedPass}', '{$email}', '{$agreement}', '{$isadmin}', '{$address}')";
-            $result = mysqli_query($connection, $query) or die(mysql_error($connection));
-            header('Location: /~dtao/Homework4/login.html');
+$result = mysqli_query($connection, $sql) or die(mysql_error($connection));
 
-        } else {
-            echo "<script>alert('Username already taken');window.location = '/~dtao/Homework4/register.html';</script>";
-        }
-    } else {
-        echo "<script>alert('Your password doesn't fulfill the requirements');window.location = '/~dtao/Homework4/register.html';</script>";
-    }
+$resultArray = mysqli_fetch_array($result);
+
+$total = 0;
+
+$part_names = array($resultArray["facebolt"],$resultArray["energyring"],$resultArray["fusionwheel"],$resultArray["spintrack"],$resultArray["performancetip"]);
+$part_types = array("FaceBolt","EnergyRing", "FusionWheel", "SpinTrack", "PerformanceTip");
+
+for ($i = 0; $i < count($part_names); $i++) {
+    $query = "SELECT price, picture FROM {$part_types[$i]} WHERE name='{$part_names[$i]}'";
+    $result = mysqli_query($connection, $query) or die(mysql_error($connection));
+    $resultArray = mysqli_fetch_array($result);
+    $price = $resultArray["price"];
+    $picture = $resultArray["picture"];
+
+    echo "<tr>";
+    echo "<td>";
+    echo "<img src=". $picture. ">";
+    echo "</td>";
+    echo "<td>";
+    echo $part_names[$i];
+    echo "</td>";
+    echo "<td>";
+    echo $part_types[$i];
+    echo "</td>";
+    echo "<td>";
+    echo "$" . $price;
+    echo "</td>";
+    echo "</tr>";
+    $total = $total + $price;
 }
 
+echo "</table>";
+
+echo "<br />";
+echo "<h1>The current total charge is $" . $total . ".</h1>";
+echo "<h1>Delivering to: " . $address . ".</h1>";
+
+$sql = "UPDATE ShoppingList SET ischeckedout='1', address='{$address}' WHERE username='{$user}'";
+
+$result = mysqli_query($connection, $sql) or die(mysql_error($connection));
+
+
+mysqli_close($connection);
 ?>
+
+</body>
+</html>

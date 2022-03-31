@@ -40,8 +40,6 @@ if (mysqli_connect_errno()) {
 ## RETRIEVE USER'S SHOPPING LIST
 $sql = "SELECT * FROM ShoppingList WHERE username='{$cookie}'";
 
-echo $sql;
-
 echo "<br />";
 $result = mysqli_query($connection, $sql) or die(mysql_error($connection));
 
@@ -88,6 +86,7 @@ echo "</table>";
 echo "<br />";
 echo "<h1>The current total charge is  $" . $total . ".</h1>";
 
+echo "<a href='/~dtao/Homework4/checkout.html'><button>Checkout</button></a>";
 mysqli_close($connection);
 
 ?>

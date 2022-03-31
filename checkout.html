@@ -4,36 +4,16 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Register | BBPartPicker</title>
+    <title>Checkout | BBPartPicker</title>
     <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
 
-    <form id="registrationForm" action="register.php" method="post">
+    <form id="registrationForm" action="checkout.php" method="post">
 
-        <h1>Register BBPartpicker</h1>
-
-        <div>
-            <label for="email" class="title">Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-
-        <div>
-            <label for="username" class="title">Username:</label>
-            <input type="text" name="username" id="username" required>
-        </div>
-
-        <div>
-            <label for="password" class="title">Password:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-
-        <div>
-            <label for="passwordConfirm" class="title">Confirm Password:</label>
-            <input type="password" name="passwordConfirm" id="passwordConfirm" required>
-        </div>
+        <h1>Checkout</h1>
 
         <div>
             <label for="address" class="title">Address:</label>
@@ -41,14 +21,23 @@
         </div>
 
         <div>
-            <input type="checkbox" name="agreement" id="agreement" required value="1">
-            <label for="agreement">Agree to Terms and Conditions</label>
+            <label for="creditnumber" class="title">Credit Card Number:</label>
+            <input type="text" name="creditnumber" id="creditnumber" required>
+        </div>
+
+        <div>
+            <label for="expiredate" class="title">Expire Date:</label>
+            <input type="text" name="expiredate" id="expiredate" required>
+        </div>
+
+        <div>
+            <label for="securecode" class="title">Security Code:</label>
+            <input type="text" name="securecode" id="securecode" required>
         </div>
 
         <div>
             <input type="submit" id="submitButton">
         </div>
-
     </form>
 </body>
 
