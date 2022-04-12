@@ -21,17 +21,25 @@ if($count == 1){
         $cookie_value = $user;
         setcookie($cookie_name, $cookie_value, time() + (86400), "/~dtao/Homework4/"); // 86400 = 1 day
         if($row['isadmin'] == 1){
+            mysqli_close($connection);
+
             header('Location: /~dtao/Homework4/admin_homepage.html');
         } else {
+            mysqli_close($connection);
+
             header('Location: /~dtao/Homework4/mainshoppage.html');
         }
     } else {
+        mysqli_close($connection);
         print "The username or password do not match";
         header("refresh: 5; /~dtao/Homework4/login.html");
     }
 } else {
+    mysqli_close($connection);
+
     print "The username or password do not match";
     header("refresh: 5; /~dtao/Homework4/login.html");
 }
+
 
 ?>

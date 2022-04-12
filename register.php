@@ -32,12 +32,17 @@ if($pass != $passconf){
     
             $query = "INSERT INTO Users (username, pass, email, agreement, isadmin, address) VALUES ('{$user}', '{$hashedPass}', '{$email}', '{$agreement}', '{$isadmin}', '{$address}')";
             $result = mysqli_query($connection, $query) or die(mysql_error($connection));
+            mysqli_close($connection);
             header('Location: /~dtao/Homework4/login.html');
 
         } else {
+            mysqli_close($connection);
+
             echo "<script>alert('Username already taken');window.location = '/~dtao/Homework4/register.html';</script>";
         }
     } else {
+        mysqli_close($connection);
+
         echo "<script>alert('Your password doesn't fulfill the requirements');window.location = '/~dtao/Homework4/register.html';</script>";
     }
 }

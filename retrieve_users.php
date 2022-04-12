@@ -90,6 +90,7 @@ while ($resultArray = mysqli_fetch_array($result))
 
 echo "</table>";
 
+mysqli_close($connection);
 
 
 ?>

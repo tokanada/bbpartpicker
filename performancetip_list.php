@@ -74,6 +74,11 @@
     }
 
     echo "</table>";
+    mysqli_close($connection);
+
     ?>
+        <button onclick="location.href='mainshoppage.html'">Home</button>
+
+        <button onclick="location.href='Shopping_Cart.php'">View Shopping Cart</button>
 
 </html>

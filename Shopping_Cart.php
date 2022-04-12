@@ -86,6 +86,8 @@ echo "</table>";
 echo "<br />";
 echo "<h1>The current total charge is  $" . $total . ".</h1>";
 
+echo "<a href='/~dtao/Homework4/mainshoppage.html'><button>Home</button></a>";
+
 echo "<a href='/~dtao/Homework4/checkout.html'><button>Checkout</button></a>";
 mysqli_close($connection);
 
